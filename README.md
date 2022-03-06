@@ -56,5 +56,5 @@
 
 [link#dart]: https://dart.dev/
 [link#protobuf]: https://developers.google.com/protocol-buffers
-[link#vagrant-libvirt]:: https://lunar.computer/posts/vagrant-libvirt-macos/
+[link#vagrant-libvirt]: https://lunar.computer/posts/vagrant-libvirt-macos/
 

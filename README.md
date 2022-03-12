@@ -14,47 +14,40 @@
     ```bash
     brew install qemu
     ```
-- install [vagrant][link#vagrant]
+
+- install [vagrant][link#vagrant] and  [vagrant-libvirt][link#vagrant-libvirt]
+    
+    1. update path 
+        ```bash
+        echo 'export PATH="/usr/local/opt/libiconv/bin:$PATH"' >> ~/.zshrc  && \
+        echo 'export LDFLAGS="-L/usr/local/opt/libiconv/lib"' >> ~/.zshrc && \
+        echo 'export CPPFLAGS="-I/usr/local/opt/libiconv/include"' >> ~/.zshrc && \
+        echo 'export VAGRANT_DEFAULT_PROVIDER=kvm' >> ~/.zshrc
+        echo 'export CONFIGURE_ARGS="with-ldflags=-L/opt/vagrant/embedded/lib with-libvirt-lib=$(brew --prefix libvirt)/lib with-libvirt-include=$(brew --prefix libvirt)/include"' >> ~/.zshrc && \
+        echo 'export PATH="/opt/vagrant/embedded/bin:$PATH"' >> ~/.zshrc
+        ```
+
+    2. install
+        ```bash
+        brew install --cask vagrant && \
+        brew install libiconv gcc libvirt && \
+        vagrant plugin install vagrant-libvirt
+        ```
+
+- install [packer][link#packert]
 
     ```bash
-    brew install --cask vagrant && \
-    brew install libiconv gcc libvirt
+    brew tap hashicorp/tap  && \
+    brew install hashicorp/tap/packer
     ```
-
-- update path 
-
-    ```bash
-    echo 'export PATH="/usr/local/opt/libiconv/bin:$PATH"' >> ~/.zshrc  && \
-    echo 'export LDFLAGS="-L/usr/local/opt/libiconv/lib"' >> ~/.zshrc && \
-    echo 'export CPPFLAGS="-I/usr/local/opt/libiconv/include"' >> ~/.zshrc && \
-    echo 'export VAGRANT_DEFAULT_PROVIDER=kvm' >> ~/.zshrc
-    ```
-
-- install [vagrant-libvirt][link#vagrant-libvirt]
-
-    1. find out `ruby version` 
-
-    ```bash
-    /opt/vagrant/embedded/bin/ruby --version
-    ```
-
-    2. install 
-
-    ```bash
-    CONFIGURE_ARGS='with-ldflags=-L/opt/vagrant/embedded/lib with-libvirt-include=/usr/local/include/libvirt with-libvirt-lib=/usr/local/lib' \
-    GEM_HOME=~/.vagrant.d/gems/<YOUR RUBY VERSION HERE> \
-    GEM_PATH=$GEM_HOME:/opt/vagrant/embedded/gems \
-    PATH=/opt/vagrant/embedded/bin:$PATH \
-    vagrant plugin install vagrant-libvirt
-    ```
-
+    
 </details>
 
 [link#homebrew]: https://brew.sh/
 [link#qemu]: https://www.qemu.org/
 [link#vagrant]: https://www.vagrantup.com/
+[link#vagrant-libvirt]: https://github.com/vagrant-libvirt/vagrant-libvirt
+[link#packer]: https://www.packer.io/
 
 [link#dart]: https://dart.dev/
 [link#protobuf]: https://developers.google.com/protocol-buffers
-[link#vagrant-libvirt]: https://lunar.computer/posts/vagrant-libvirt-macos/
-
